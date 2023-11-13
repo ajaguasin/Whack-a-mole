@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkgald5xg0irp"]
+
+[ext_resource type="Script" path="res://Mole/Mole.gd" id="1_0i8ih"]
+[ext_resource type="Script" path="res://Main/Main.gd" id="1_f6w0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lae8m"]
+size = Vector2(40, 40)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_f6w0o")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Mole" type="Node2D" parent="."]
+script = ExtResource("1_0i8ih")
+
+[node name="ColorRect" type="ColorRect" parent="Mole"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mole"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_lae8m")
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
